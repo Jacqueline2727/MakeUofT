@@ -48,8 +48,8 @@ void setup() {
 ////////////////////////////////////////////////////////////////
 
 void loop() {
-  lcd.clear();
-  lcd.print("Start");
+  win("Start");
+  delay(100);
   Serial.println("First Step: Touch and Light");
   bool first = touch_then_light_test();
   if(first == true){
@@ -177,18 +177,13 @@ bool screen_riddle(){
 
 int lcd_screen_win(){
   delay(5000);
-  win();
-  win();
-  win();
-  win();
-  win();
+  win("You Win!");
 }
 
-int win(){    
-  lcd.print("You Win!");     
+String win(char s[]){    
+  lcd.print(s);     
   lcd.setRGB(224,60,70);   
   delay(500);  
   lcd.setRGB(0,0,0); 
-  delay(500);  
-  lcd.clear();
+  delay(500); 
 }
